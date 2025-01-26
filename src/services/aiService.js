@@ -1,0 +1,54 @@
+import axios from 'axios';
+
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+const GEMINI_API_KEY = 'AIzaSyBfP0bSnKrVHgAdrEI54g_Lx8ThZ1EuysQ'; // Replace with your actual key
+
+
+// GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+// GEMINI_API_KEY = "AIzaSyBfP0bSnKrVHgAdrEI54g_Lx8ThZ1EuysQ"  # Replace with your actual API key
+
+// # 
+
+export const generateResponse = async (message) => {
+  try {
+    console.log("Sending request to Gemini API with message:", message);
+
+    // Make API call to Gemini API
+    const response = await axios.post(
+      GEMINI_API_URL,
+      { contents: [{ role: 'user', parts: [{ text: message }] }] },
+      { headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY }, timeout: 10000 } // 10-second timeout
+    );
+    
+    // Log the response data to inspect its structure
+    console.log("Gemini API Response:", response.data);
+
+    // Check if response contains candidates and return the appropriate content
+    if (response.status === 200 && response.data.candidates && Array.isArray(response.data.candidates) && response.data.candidates.length > 0) {
+      const botText = response.data.candidates[0].content.parts[0].text;
+      console.log("Bot Response:", botText);
+      return botText; // Return the AI response text
+    } else {
+      console.error("Invalid response from Gemini API:", response.data);
+      throw new Error('Invalid or empty response from Gemini API');
+    }
+  } catch (err) {
+    console.error('AI Service Error:', err.message);
+    // Return a generic error message in case of any issues
+    return 'Sorry, I am unable to process your request at the moment.';
+  }
+};
+
+
+
+// aiService.js
+export const generateResponseFromContext = async (message, context) => {
+  try {
+    // Process the context and message to generate a response using your AI model (Gemini, etc.)
+    const response = await generateGeminiResponse(message, context);
+    return response;
+  } catch (error) {
+    console.error('Error generating response:', error);
+    throw new Error('Error generating response from AI model');
+  }
+};
