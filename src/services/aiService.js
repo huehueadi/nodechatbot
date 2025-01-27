@@ -17,11 +17,10 @@ export const generateResponse = async (message) => {
     const response = await axios.post(
       GEMINI_API_URL,
       { contents: [{ role: 'user', parts: [{ text: message }] }] },
-      { headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY }, timeout: 10000 } // 10-second timeout
+      { headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY }, timeout: 100000 } // 10-second timeout
     );
     
     // Log the response data to inspect its structure
-    console.log("Gemini API Response:", response.data);
 
     // Check if response contains candidates and return the appropriate content
     if (response.status === 200 && response.data.candidates && Array.isArray(response.data.candidates) && response.data.candidates.length > 0) {

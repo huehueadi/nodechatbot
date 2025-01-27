@@ -1,0 +1,17 @@
+A dynamic QR code is a type of QR code that can be edited or updated even after it's been printed or shared. Unlike static QR codes, which embed permanent information (like a URL or text), dynamic QR codes point to a short URL that can redirect to different content or destinations. This makes them versatile and adaptable.
+
+Features of Dynamic QR Codes:
+Editable Content:
+
+The destination URL or data can be changed without modifying the QR code itself.
+Useful for campaigns, updated links, or changing content.
+Trackable Analytics:
+
+Track data like scan locations, number of scans, and device types.
+Great for marketing campaigns to measure effectiveness.
+Customizable Actions:
+
+Dynamic QR codes can link to different actions like websites, forms, social media, videos, or downloadable files.
+Password Protection:
+
+Some dynamic QR code services allow password protection for added security.
