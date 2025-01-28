@@ -1,13 +1,7 @@
 import axios from 'axios';
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
-const GEMINI_API_KEY = 'AIzaSyBfP0bSnKrVHgAdrEI54g_Lx8ThZ1EuysQ'; // Replace with your actual key
-
-
-// GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-// GEMINI_API_KEY = "AIzaSyBfP0bSnKrVHgAdrEI54g_Lx8ThZ1EuysQ"  # Replace with your actual API key
-
-// # 
+const GEMINI_API_KEY = 'AIzaSyCR8N0h-azK7GlfoMimJUg4vNlw0yA2juU'; // New API Key
 
 export const generateResponse = async (message) => {
   try {
@@ -37,7 +31,6 @@ export const generateResponse = async (message) => {
     return 'Sorry, I am unable to process your request at the moment.';
   }
 };
-
 
 
 // aiService.js
